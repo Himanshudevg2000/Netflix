@@ -8,8 +8,12 @@ import {
 import { checkValidateData } from "../utils/validate";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { BACKGROUNDIMG, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isSignInForm, setIsSignInForm] = useState(true);
 
@@ -41,11 +45,19 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           updateProfile(user, {
-            photoURL: "https://avatars.githubusercontent.com/u/103045944?v=4",
+            photoURL: USER_AVATAR,
             displayName: name.current.value,
           })
             .then(() => {
-              navigate("/browse");
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -85,7 +97,7 @@ const Login = () => {
       <div className="absolute ">
         <img
           className="object-cover w-screen h-screen"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_small.jpg"
+          src={BACKGROUNDIMG}
           alt="background logo"
         />
       </div>

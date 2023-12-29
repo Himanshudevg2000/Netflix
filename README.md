@@ -14,6 +14,10 @@
 - Create Signup User Account in Firebase
 - Implement Sign User API
 - Created Redux Store with userSlice
+- Implemented Sign out
+- If your signin then redirect to browse page and if not login it should redirect to signup/Login page
+- Unsubscribe to mounting state in onauthChanged
+- Add hardcoded values into constants
 
 # Features
 - Login/ SIgnup Page
