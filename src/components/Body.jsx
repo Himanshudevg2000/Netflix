@@ -5,7 +5,6 @@ import Login from "./Login";
 import { useDispatch } from "react-redux";
 
 const Body = () => {
-
   const appRouter = createBrowserRouter([
     { path: "/", element: <Login /> },
 

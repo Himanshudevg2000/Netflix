@@ -9,7 +9,7 @@ import { HEADERLOGO } from "../utils/constants";
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
-  console.log("user: ", user);
+  // console.log("user: ", user);
 
   const navigate = useNavigate();
 
@@ -36,23 +36,19 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
-        navigate("/browse")
+        navigate("/browse");
       } else {
         dispatch(removerUser());
-        navigate("/")
+        navigate("/");
       }
     });
     // Unsubscribes when component unmounts
-    return ()=> unsubscribe()
+    return () => unsubscribe();
   }, []);
 
   return (
     <div className="absolute w-screen z-40 px-8 py-2 bg-gradient-to-b from-black flex justify-between">
-      <img
-        className="w-44"
-        src={HEADERLOGO}
-        alt="logo"
-      />
+      <img className="w-44" src={HEADERLOGO} alt="logo" />
       {user && (
         <div className="flex p-4 cursor-pointer">
           <img className="w-12 h-12" src={user.photoURL} alt="UserIcon" />
