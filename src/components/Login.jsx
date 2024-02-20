@@ -28,7 +28,7 @@ const Login = () => {
   };
 
   const handleChange = () => {
-    console.log(email.current.value, password.current.value);
+    // console.log(email.current.value, password.current.value);
     const validate = checkValidateData(
       email.current.value,
       password.current.value
@@ -63,7 +63,7 @@ const Login = () => {
               setErrorMessage(error.message);
             });
 
-          console.log("user: ", user);
+          // console.log("user: ", user);
         })
         .catch((error) => {
           const errorCode = error.code;
